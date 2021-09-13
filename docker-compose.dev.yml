@@ -1,0 +1,42 @@
+---
+version: '3'
+
+services:
+  redis:
+    image: redis:5.0.0
+    ports:
+      - 6379:6379
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 8888:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@domain.com
+      PGADMIN_DEFAULT_PASSWORD: somepass
+    links:
+      - postgresql-master
+    deploy:
+      resources:
+        limits:
+          memory: "1G"
+
+  postgresql-master:
+    image: 'bitnami/postgresql:12'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRESQL_PASSWORD=somepass
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      # https://docs.timescale.com/v0.12/getting-started/configuring#locks
+      - ${PWD}/config/postgresql.conf:/opt/bitnami/postgresql/conf/conf.d/postgresql.conf
+    deploy:
+      resources:
+        limits:
+          memory: "2G"
+
