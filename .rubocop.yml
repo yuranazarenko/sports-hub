@@ -1,0 +1,36 @@
+AllCops:
+  TargetRubyVersion: 3.0.2
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - './README.md'
+    - './Gemfile.lock'
+    - './.rubocop.yml'
+    - './app/javascript/*'
+    - './config/webpack/*.js'
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Bundler/DuplicatedGem:
+  Enabled: false
