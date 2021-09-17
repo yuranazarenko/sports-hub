@@ -3,22 +3,19 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+##### Version of gems:
 
-* Ruby version
+* Ruby version 3.0.2
 
-* System dependencies
+* Rails version 6.1.4.1
 
-* Configuration
+* Postgresql version 1.1
 
-* Database creation
+* Bundler version 2.2.22
 
-* Database initialization
+##### Run/stop docker compose:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker-compose -f docker-compose.dev.yml up -d
+docker-compose -f docker-compose.dev.yml stop
+```
