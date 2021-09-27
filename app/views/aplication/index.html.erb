@@ -15,6 +15,9 @@
             <button class="btn  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= image_tag("user.jpg", width: 60,  height: 60, class: "rounded-circle user-avtar") %>
               <%= current_user.email %>
+              <% if current_user.admin? %>
+                <span>(admin)</span>
+              <% end %>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item active" href="#">1</a></li>

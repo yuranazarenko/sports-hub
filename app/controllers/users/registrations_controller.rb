@@ -3,7 +3,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     def create
-      @user = User.new(user_params)
+      @user = User.new(user_params.merge!({ admin: false }))
 
       if @user.save
         redirect_to root_path
