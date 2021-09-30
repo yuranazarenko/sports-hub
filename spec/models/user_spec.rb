@@ -16,6 +16,42 @@ RSpec.describe User, type: :model do
     end
 
     context "invalid params" do
+      context "invalid first name" do
+        context "too short first name" do
+          let(:user) { build(:user, first_name: "a") }
+
+          it "properly validates params" do
+            expect(user.valid?).to be_falsey
+          end
+        end
+
+        context "too long first name" do
+          let(:user) { build(:user, first_name: "qwertyuiopasdfghjklzxcvbnmqwert") }
+
+          it "properly validates params" do
+            expect(user.valid?).to be_falsey
+          end
+        end
+      end
+
+      context "invalid last name" do
+        context "too short last name" do
+          let(:user) { build(:user, last_name: "a") }
+
+          it "properly validates params" do
+            expect(user.valid?).to be_falsey
+          end
+        end
+
+        context "too long last name" do
+          let(:user) { build(:user, last_name: "qwertyuiopasdfghjklzxcvbnmqwert") }
+
+          it "properly validates params" do
+            expect(user.valid?).to be_falsey
+          end
+        end
+      end
+
       context "invalid email" do
         context "domain is missing" do
           let(:user) { build(:user, email: "valid_email@gmail") }

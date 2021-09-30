@@ -14,7 +14,7 @@
           <div class="btn-group">
             <button class="btn  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= image_tag("user.jpg", width: 60,  height: 60, class: "rounded-circle user-avtar") %>
-              <%= current_user.email %>
+              <%= current_user.first_name %>
               <% if current_user.admin? %>
                 <span>(admin)</span>
               <% end %>
