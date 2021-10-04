@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root "application#index"
   devise_for :users,
              controllers: {
-               sessions: "users/sessions",
+               sessions:      "users/sessions",
                registrations: "users/registrations",
-               passwords: "users/passwords"
+               passwords:     "users/passwords"
              }
 
   get "/app", to: "application#index", as: "home"
