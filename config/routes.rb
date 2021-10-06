@@ -10,4 +10,7 @@ Rails.application.routes.draw do
              }
 
   get "/app", to: "application#index", as: "home"
+  namespace :admin do
+    get "/", to: "base#index", as: "main_page"
+  end
 end
