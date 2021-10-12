@@ -18,7 +18,7 @@ Metrics/BlockLength:
     - lib/tasks/auto_annotate_models.rake
 
 Layout/LineLength:
-  Max: 125
+  Max: 130
 
 Lint/AmbiguousBlockAssociation:
   Exclude:

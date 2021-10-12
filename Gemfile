@@ -28,9 +28,12 @@ gem "jbuilder", "~> 2.7"
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
+gem "blueprinter"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "devise"
 gem "devise-jwt"
+gem "oj"
+gem "pagy", "~> 3.5"
 gem "pundit"
 gem "rack-cors"
 
@@ -54,6 +57,7 @@ end
 
 group :test do
   gem "factory_bot_rails"
+  gem "rails-controller-testing"
   gem "rspec-rails"
 end
 

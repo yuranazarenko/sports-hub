@@ -1,40 +1,14 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-xxl">
-      <div class="row container-fluid">
-        <div class="col-3 bg-danger">
-          <%= link_to 'Sports hub', home_path , :class => 'text-light navbar-brand' %>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-        <div class="col-9 ">
-          <% if user_signed_in? %>
+<div class="flex">
+  <%= render 'layouts/header' %>
 
-          <div class="btn-group">
-            <button class="btn  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= image_tag("user.jpg", width: 60,  height: 60, class: "rounded-circle user-avtar") %>
-              <%= current_user.first_name %>
-              <% if current_user.admin? %>
-                <span>(admin)</span>
-              <% end %>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item active" href="#">1</a></li>
-              <li><a class="dropdown-item" href="#">2</a></li>
-              <% if current_user.admin? %>
-                <li><%= link_to 'Admin page', admin_main_page_path, :class => "dropdown-item" %></li>
-              <% end %>
-              <li><hr class="dropdown-divider"></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => "dropdown-item" %></li>
-            </ul>
-          </div>
-          <% else %>
-            <%= link_to 'Log in', new_user_session_path, class: "btn btn-danger" %> or <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-danger" %>
-          <% end %>
-        </div>
+  <div class="container-xxl h100">
+
+    <div class="row h100 container-fluid header_container border bg-light">
+      <div class="col-3 ">
+      </div>
+      <div class="col-9">
+        <p class="h1 ms-5">Home page</p>
       </div>
     </div>
-  </nav>
-</header>
-
+  </div>
+</div>

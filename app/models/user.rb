@@ -11,6 +11,9 @@ class User < ApplicationRecord
          :registerable,
          :validatable,
          jwt_revocation_strategy: JwtDenylist
+
+  scope :admin_users, -> { where(admin: true) }
+  scope :simple_users, -> { where(admin: false) }
 end
 
 # == Schema Information

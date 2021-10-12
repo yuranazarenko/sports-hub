@@ -1,0 +1,40 @@
+<div class="container-xxl">
+    <div class="row container-fluid header_container bg-light">
+      <div class="col-3 bg-danger d-flex align-items-center justify-content-center">
+        <%= link_to 'Sports hub', home_path , :class => 'text-light navbar-brand fs-1' %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-9">
+          </div>
+          <div class="col-3 user_menu">
+            <% if user_signed_in? %>
+              <div class="btn-group">
+                <button class="btn  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag("user.jpg", width: 60,  height: 60, class: "rounded-circle user-avtar") %>
+                  <%= current_user.first_name %>
+                  <% if current_user.admin? %>
+                    <span>(admin)</span>
+                  <% end %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Menu item</a></li>
+                  <li><a class="dropdown-item" href="#">Menu item</a></li>
+                  <% if current_user.admin? %>
+                    <li><%= link_to 'Admin page', admin_main_page_path, :class => "dropdown-item #{ current_page?(admin_main_page_path) ? "active" : "" } " %></li>
+                  <% end %>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => "dropdown-item" %></li>
+                </ul>
+              </div>
+            <% else %>
+              <%= link_to 'Log in', new_user_session_path, class: "btn btn-danger" %> or <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
