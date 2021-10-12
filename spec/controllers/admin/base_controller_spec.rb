@@ -31,5 +31,24 @@ RSpec.describe Admin::BaseController, type: :request do
         expect(response).to have_http_status(302)
       end
     end
+
+    context "validates local variables" do
+      let(:simple_user) { create(:user) }
+      let(:admin_user) { create(:user, admin: true, email: "enother_email@gmail.com") }
+
+      it "properly validates admin_users" do
+        # log in as admin
+        post user_session_path, xhr: true, params: { user: { email: admin_user.email, password: admin_user.password } }
+        get admin_main_page_path, xhr: true
+        expect(assigns(:admin_users)).to include(admin_user)
+      end
+
+      it "properly validates simple_users" do
+        # log in as admin
+        post user_session_path, xhr: true, params: { user: { email: admin_user.email, password: admin_user.password } }
+        get admin_main_page_path, xhr: true, params: { simple_user: simple_user, admin_user: admin_user }
+        expect(assigns(:simple_users)).to include(simple_user)
+      end
+    end
   end
 end

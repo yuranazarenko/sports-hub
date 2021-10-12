@@ -1,0 +1,17 @@
+<ul class="nav nav-pills ml100 pb-5" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link <%= "active" unless params[:active_tab] == "simple_users" %>" id="admin-user-tab" data-bs-toggle="tab" data-bs-target="#admin-user" type="button" role="tab" aria-controls="admin-user" aria-selected="true">Admins</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link <%= "active" if params[:active_tab] == "simple_users" %>" id="simple-users-tab" data-bs-toggle="tab" data-bs-target="#simple-users" type="button" role="tab" aria-controls="simple-users" aria-selected="false">Users</button>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane  <%= "active" unless params[:active_tab] == "simple_users" %>" id="admin-user" role="tabpanel" aria-labelledby="admin-user-tab">
+    <%= render partial: "admin/base/users_table", locals: { users: @admin_users, pagy: @pagy_admin_users }  %>
+  </div>
+  <div class="tab-pane <%= "active" if params[:active_tab] == "simple_users" %>" id="simple-users" role="tabpanel" aria-labelledby="simple-users-tab">
+    <%= render partial: "admin/base/users_table", locals: { users: @simple_users, pagy: @pagy_simple_users }  %>
+  </div>
+</div>

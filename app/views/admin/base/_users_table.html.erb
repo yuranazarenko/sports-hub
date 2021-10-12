@@ -1,0 +1,23 @@
+<table class="table table-secondary table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Role</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% users.each_with_index do |user, index| %>
+      <tr>
+        <th scope="row"><%= (pagy.vars[:page].to_i - 1) * pagy.vars[:items].to_i +  index + 1  %></th>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin ? "admin" : "user" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render partial: "shared/paginator", locals: { pagy: pagy }%>

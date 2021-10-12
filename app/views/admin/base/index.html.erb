@@ -1,18 +1,25 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-xxl">
-      <div class="row container-fluid">
-        <div class="col-3 bg-danger">
-          <%= link_to 'Sports hub', home_path , :class => 'text-light navbar-brand' %>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<div class="flex">
+  <%= render 'layouts/header' %>
+
+  <div class="container-xxl h100">
+
+    <div class="row h100 container-fluid header_container border bg-light">
+      <div class="col-12 p-5">
+
+        <div class="d-flex align-items-start">
+          <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-pills-users-tab" data-bs-toggle="pill" data-bs-target="#v-pills-users" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Users</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Tab 2</button>
+          </div>
+          <div class="tab-content ml100" id="v-pills-tabContent">
+            <div class="tab-pane active" id="v-pills-users" role="tabpanel" aria-labelledby="v-pills-users-tab">
+              <%= render 'admin/base/users' %>
+            </div>
+            <div class="tab-pane " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><p>Tab 2 content</p></div>
+          </div>
         </div>
-        <div class="col-9 ">
-          <h2>Admin page</h2>
-        </div>
+
       </div>
     </div>
-  </nav>
-</header>
-
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.user_menu .dropdown-item.active{
+  background-color: red;
+}
+
+.header_container{
+  padding-left: 0 !important;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.h100{
+  height: 100%;
+}
+
+.flex .nav-pills .nav-link.active{
+  background-color: red;
+}
+
+.ml100{
+  margin-left: 100px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: red;
+  border-color: red;
+}
