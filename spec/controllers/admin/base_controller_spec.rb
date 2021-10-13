@@ -2,24 +2,24 @@
 
 require "rails_helper"
 
-RSpec.describe Admin::BaseController, type: :request do
+RSpec.describe Admin::BaseController, type: :request, aggregate_failures: true do
   context "GET /admin" do
-    let(:simple_user) { create(:user) }
-    let(:admin_user) { create(:user, admin: true) }
+    let!(:user) { create(:user) }
+    let!(:admin_user) { create(:user, admin: true) }
 
     context "user is admin" do
+      sign_in_admin
+
       it "properly validates route" do
-        # log in as admin
-        post user_session_path, xhr: true, params: { user: { email: admin_user.email, password: admin_user.password } }
         get admin_main_page_path, xhr: true
         expect(response).to have_http_status(:success)
       end
     end
 
     context "user is not admin" do
+      sign_in_user
+
       it "properly validates route" do
-        # log in as not admin
-        post user_session_path, xhr: true, params: { user: { email: simple_user.email, password: simple_user.password } }
         get admin_main_page_path, xhr: true
         expect(response).to have_http_status(302)
       end
@@ -33,21 +33,12 @@ RSpec.describe Admin::BaseController, type: :request do
     end
 
     context "validates local variables" do
-      let(:simple_user) { create(:user) }
-      let(:admin_user) { create(:user, admin: true, email: "enother_email@gmail.com") }
+      sign_in_admin
 
-      it "properly validates admin_users" do
-        # log in as admin
-        post user_session_path, xhr: true, params: { user: { email: admin_user.email, password: admin_user.password } }
+      it "properly validates admin_users & simple_users" do
         get admin_main_page_path, xhr: true
-        expect(assigns(:admin_users)).to include(admin_user)
-      end
-
-      it "properly validates simple_users" do
-        # log in as admin
-        post user_session_path, xhr: true, params: { user: { email: admin_user.email, password: admin_user.password } }
-        get admin_main_page_path, xhr: true, params: { simple_user: simple_user, admin_user: admin_user }
-        expect(assigns(:simple_users)).to include(simple_user)
+        expect(assigns(:admin_users)).to match_array([admin_user])
+        expect(assigns(:simple_users)).to match_array([user])
       end
     end
   end
