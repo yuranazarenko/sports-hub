@@ -106,16 +106,16 @@ RSpec.describe User, type: :model do
   end
 
   context "testing admins scopes" do
-    let(:admin_user) { create(:user, admin: true) }
+    let(:admin_user) { create(:user, :admin) }
 
     it "includes users with admin flag" do
       expect(User.admin_users).to include(admin_user)
     end
 
-    let(:simple_user) { create(:user, admin: false) }
+    let(:user) { create(:user) }
 
     it "excludes users without admin flag" do
-      expect(User.admin_users).not_to include(simple_user)
+      expect(User.admin_users).not_to include(user)
     end
   end
 end
