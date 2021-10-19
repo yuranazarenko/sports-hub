@@ -1,0 +1,7 @@
+<ul class="nav flex-column">
+  <% @categories.each do |category| %>
+    <li class="nav-item">
+      <p class="text-secondary"><%= category[:name] %></p>
+    </li>
+  <% end %>
+</ul>

@@ -31,15 +31,5 @@ RSpec.describe Admin::BaseController, type: :request, aggregate_failures: true d
         expect(response).to have_http_status(302)
       end
     end
-
-    context "validates local variables" do
-      sign_in_admin
-
-      it "properly validates admin_users & simple_users" do
-        get admin_main_page_path, xhr: true
-        expect(assigns(:admin_users)).to match_array([admin_user])
-        expect(assigns(:simple_users)).to match_array([user])
-      end
-    end
   end
 end

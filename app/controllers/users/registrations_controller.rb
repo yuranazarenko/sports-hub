@@ -2,6 +2,8 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    layout "authentication"
+
     def create
       @user = User.new(user_params.merge!({ admin: false }))
 

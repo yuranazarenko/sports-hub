@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe User, type: :model do
+RSpec.describe User, type: :model, aggregate_failures: true do
   context "user attrs validation" do
     let(:user) { build(:user) }
     it "accepts valid params" do
@@ -22,6 +22,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:first_name]).to eq ["is too short (minimum is 2 characters)"]
           end
         end
 
@@ -30,6 +31,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:first_name]).to eq ["is too long (maximum is 30 characters)"]
           end
         end
       end
@@ -40,6 +42,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:last_name]).to eq ["is too short (minimum is 2 characters)"]
           end
         end
 
@@ -48,6 +51,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:last_name]).to eq ["is too long (maximum is 30 characters)"]
           end
         end
       end
@@ -57,6 +61,7 @@ RSpec.describe User, type: :model do
           let(:user) { build(:user, email: "valid_email@gmail") }
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:email]).to eq ["is invalid", "is invalid"]
           end
         end
 
@@ -65,6 +70,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:email]).to eq ["is invalid", "is invalid"]
           end
         end
 
@@ -73,6 +79,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:email]).to eq ["is invalid", "is invalid"]
           end
         end
       end
@@ -83,6 +90,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:password]).to eq ["is too short (minimum is 6 characters)"]
           end
         end
 
@@ -91,6 +99,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:password]).to eq ["is too long (maximum is 40 characters)"]
           end
         end
 
@@ -99,6 +108,7 @@ RSpec.describe User, type: :model do
 
           it "properly validates params" do
             expect(user.valid?).to be_falsey
+            expect(user.errors.messages[:password_confirmation]).to eq ["doesn't match Password"]
           end
         end
       end
@@ -119,25 +129,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :bigint           not null, primary key
-#  admin                  :boolean          default(FALSE)
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  first_name             :string
-#  last_name              :string
-#  remember_created_at    :datetime
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#
-# Indexes
-#
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#

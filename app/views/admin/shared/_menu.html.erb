@@ -1,0 +1,11 @@
+<ul class="menu">
+  <li title="home">
+    <%= link_to 'home', admin_main_page_path, :class => "home #{ current_page?(admin_main_page_path) ? "active" : "" } " %>
+  </li>
+  <li title="users">
+    <%= link_to 'users', admin_users_path, :class => "users #{ current_page?(admin_users_path) ? "active" : "" } " %>
+  </li>
+  <li title="IA">
+    <%= link_to 'sitemap', admin_information_architectures_path, :class => "sitemap #{ params[:controller] == "admin/information_architectures" ? "active" : "" } " %>
+  </li>
+</ul>
