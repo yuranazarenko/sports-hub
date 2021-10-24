@@ -21,7 +21,7 @@ Metrics/MethodLength:
   Max: 15
 
 Layout/LineLength:
-  Max: 130
+  Max: 120
 
 Lint/AmbiguousBlockAssociation:
   Exclude:

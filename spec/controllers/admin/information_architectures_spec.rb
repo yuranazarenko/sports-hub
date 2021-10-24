@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Admin::InformationArchitecturesController, type: :request, aggregate_failures: true do
+RSpec.describe Admin::InformationArchitecturesController, type: :request do
   let!(:admin_user) { create(:user, :admin) }
   sign_in_admin
 

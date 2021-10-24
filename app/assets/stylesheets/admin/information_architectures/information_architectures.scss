@@ -1,3 +1,20 @@
-// Place all the styles related to the admin/information_architectures/information_architectures controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.categories_block .bord_dotted{
+  border: 1px dotted #6c757d;
+}
+
+.alert-message .alert-icon {
+  width: 3rem;
+}
+
+.alert-message .close{
+  font-size: 1rem;
+  color: #a6a6a6;
+}
+
+.alert-danger .alert-icon {
+  background-color: #ff5e5e;
+}
+
+.alert-success .alert-icon {
+  background-color: #3cb371;
+}

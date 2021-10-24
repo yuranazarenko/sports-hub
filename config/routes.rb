@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/", to: "base#index", as: "main_page"
     resources :users, only: [:index]
-    resources :information_architectures, only: [:index]
+    namespace :information_architectures do
+      get "/", action: :index
+      resources :categories, only: [:create]
+    end
   end
 end
