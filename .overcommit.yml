@@ -22,6 +22,8 @@ PreCommit:
     enabled: true
     on_fail: warn
 
+CapitalizedSubject:
+    enabled: false
 
 #  TrailingWhitespace:
 #    enabled: true

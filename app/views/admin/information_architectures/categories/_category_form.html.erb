@@ -1,0 +1,10 @@
+<%= form_with url: admin_information_architectures_categories_path, method: :post do |form| %>
+  <div class="modal-body">
+    <%= form.label :name, 'Name:', class: "text-secondary" %><br>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn text-danger" data-bs-dismiss="modal">Cancel</button>
+    <%= form.submit "Add", class: "btn btn-danger" %>
+  </div>
+<% end %>

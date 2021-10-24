@@ -1,0 +1,11 @@
+<div class="alert_message <%= "hide" if(flash[:theme].nil?)  %> alert alert-<%= flash[:theme] %> alert-message d-flex rounded p-0" id="alert_message" role="alert">
+  <div class="alert-icon d-flex justify-content-center align-items-center flex-grow-0 flex-shrink-0 py-3">
+    <i class="fas fa-<%= flash[:icon] %> fa"></i>
+  </div>
+  <div class="d-flex align-items-center py-2 px-3">
+    <%= flash[:note] %>
+  </div>
+  <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
+    <i class="fas fa-times fa"></i>
+  </a>
+</div>

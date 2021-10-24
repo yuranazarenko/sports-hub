@@ -1,7 +1,34 @@
-<ul class="nav flex-column">
-  <% @categories.each do |category| %>
-    <li class="nav-item">
-      <p class="text-secondary"><%= category[:name] %></p>
-    </li>
-  <% end %>
-</ul>
+<div class="row categories_block">
+  <div class="col-4">
+    <ul class="nav flex-column text-center">
+      <li class="nav-item pb-4">
+        <button type="button" class="btn bord_dotted text-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          + add category
+        </button>
+      </li>
+      <%= render partial: "admin/information_architectures/message", locals: { flash: flash }  %>
+
+      <% @categories.each do |category| %>
+        <li class="nav-item">
+          <p class="text-secondary"><%= category[:name] %></p>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <p class="modal-title h2" id="staticBackdropLabel">Add new category</p>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <%= render partial: "admin/information_architectures/categories/category_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+  </div>
+  <div class="col-4">
+  </div>
+</div>
