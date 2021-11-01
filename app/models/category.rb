@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Category < ApplicationRecord
+  has_many :sub_categories
+
   validates :name, length: { in: 2..20 }, uniqueness: true
 end
 

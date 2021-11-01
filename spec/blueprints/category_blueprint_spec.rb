@@ -9,13 +9,11 @@ RSpec.describe CategoryBlueprint do
       let(:category) { create(:category, name: name) }
       let(:blueprint_category) { CategoryBlueprint.render_as_hash(category, view: :basic) }
 
-      it "validates numbers of elements" do
-        expect(blueprint_category.count).to eql(2)
-      end
-
       it "checks the content" do
-        expect(blueprint_category).to include(
-          name: name
+        expect(blueprint_category).to eq(
+          id:             category.id,
+          name:           name,
+          sub_categories: []
         )
       end
     end
