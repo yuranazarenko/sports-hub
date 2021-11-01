@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     namespace :information_architectures do
       get "/", action: :index
       resources :categories, only: [:create]
+      resources :sub_categories, only: [:create]
     end
   end
 end

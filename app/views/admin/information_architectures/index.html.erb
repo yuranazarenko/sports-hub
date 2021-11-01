@@ -1,33 +1,32 @@
+<%= render partial: "admin/information_architectures/message", locals: { flash: flash }  %>
 <div class="row categories_block">
   <div class="col-4">
     <ul class="nav flex-column text-center">
       <li class="nav-item pb-4">
-        <button type="button" class="btn bord_dotted text-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button type="button" class="btn bord_dotted text-secondary" data-bs-toggle="modal" data-bs-target="#categoryBackdrop">
           + add category
         </button>
       </li>
-      <%= render partial: "admin/information_architectures/message", locals: { flash: flash }  %>
-
-      <% @categories.each do |category| %>
-        <li class="nav-item">
-          <p class="text-secondary"><%= category[:name] %></p>
-        </li>
-      <% end %>
+      <%= render partial: "admin/information_architectures/categories/categories_list", locals: { categories: @categories } %>
     </ul>
-
-    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <p class="modal-title h2" id="staticBackdropLabel">Add new category</p>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-          </div>
-          <%= render partial: "admin/information_architectures/categories/category_form" %>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "admin/information_architectures/categories/category_form" %>
   </div>
   <div class="col-4">
+    <ul class="nav flex-column text-center">
+      <li class="nav-item pb-4">
+        <button type="button" class="btn bord_dotted text-secondary" data-bs-toggle="modal" data-bs-target="#sub-categoryBackdrop">
+          + add cub category
+        </button>
+      </li>
+      <div class="tab-content justify-content-center" id="category-tabContent">
+        <% @categories.each do |category| %>
+          <div class="tab-pane <%= "active" if(@active_category_id == category[:id]) %>" id="category-<%= category[:id] %>" role="tabpanel" aria-labelledby="category-<%= category[:id] %>-tab">
+            <%= render partial: "admin/information_architectures/sub_categories/sub_categories_list", locals: { sub_categories: category[:sub_categories] } %>
+          </div>
+        <% end %>
+      </div>
+    </ul>
+    <%= render partial: "admin/information_architectures/sub_categories/sub_category_form" %>
   </div>
   <div class="col-4">
   </div>

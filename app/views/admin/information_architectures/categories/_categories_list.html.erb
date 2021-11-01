@@ -1,0 +1,7 @@
+<div class="d-flex align-items-start justify-content-center">
+  <div class="nav flex-column nav-pills me-3" id="category-tab" role="tablist" aria-orientation="vertical">
+    <% categories.each do |category| %>
+      <button class="nav-link category_button <%= "active" if(@active_category_id == category[:id]) %>" data-id="<%= category[:id] %>" id="category-<%= category[:id] %>-tab" data-bs-toggle="pill" data-bs-target="#category-<%= category[:id] %>" type="button" role="tab" aria-controls="category-<%= category[:id] %>" aria-selected="<%= @active_category_id == category[:id] ? "true" : "false" %>"><%= category[:name] %></button>
+    <% end %>
+  </div>
+</div>

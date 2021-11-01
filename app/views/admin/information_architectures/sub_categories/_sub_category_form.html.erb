@@ -1,12 +1,13 @@
-<div class="modal" id="categoryBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="categoryBackdropLabel" aria-hidden="true">
+<div class="modal sub_category_form" id="sub-categoryBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sub-categoryBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <p class="modal-title h2" id="categoryBackdropLabel">Add new category</p>
+        <p class="modal-title h2" id="sub-categoryBackdropLabel">Add new sub category</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
       </div>
-      <%= form_with url: admin_information_architectures_categories_path, method: :post do |form| %>
+      <%= form_with url: admin_information_architectures_sub_categories_path, method: :post do |form| %>
         <div class="modal-body">
+          <%= form.hidden_field :category_id, value: "" %>
           <%= form.label :name, 'Name:', class: "text-secondary" %><br>
           <%= form.text_field :name, class:"form-control" %>
         </div>
@@ -18,4 +19,3 @@
     </div>
   </div>
 </div>
-
