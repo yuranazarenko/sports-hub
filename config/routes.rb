@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     namespace :information_architectures do
       get "/", action: :index
-      resources :categories, only: [:create]
+      resources :categories, only: %i[create destroy update]
       resources :sub_categories, only: [:create]
     end
   end

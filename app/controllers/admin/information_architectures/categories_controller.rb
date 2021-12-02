@@ -14,6 +14,30 @@ module Admin
         redirect_to admin_information_architectures_path
       end
 
+      def destroy
+        @category = Category.find_by(id: params[:id])
+        if @category.nil?
+          create_flash(:category_not_found)
+        elsif @category.destroy
+          create_flash(:category_deleted)
+        else
+          create_flash(:category_not_deleted)
+        end
+
+        redirect_to admin_information_architectures_path
+      end
+
+      def update
+        @category = Category.find_by(id: params[:id])
+        if @category.update(category_params)
+          create_flash(:category_updated)
+        else
+          create_flash(:category_not_updated)
+        end
+
+        redirect_to admin_information_architectures_path
+      end
+
       private
 
       def category_params

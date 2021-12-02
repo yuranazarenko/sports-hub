@@ -22,3 +22,14 @@
 .alert-success .alert-icon {
   background-color: #3cb371;
 }
+
+ .pencil:hover .fa-pencil {
+   color:red !important;
+}
+.trash:hover .fa-trash {
+  color:red !important;
+}
+
+#category-tab .row{
+  height: 35px;
+}
