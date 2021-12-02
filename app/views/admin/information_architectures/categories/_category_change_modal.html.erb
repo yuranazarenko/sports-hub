@@ -1,23 +1,23 @@
-<div class="modal" id="categoryBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="categoryBackdropLabel" aria-hidden="true">
+<div class="modal" id="categoryChange" data-path="<%= admin_information_architectures_categories_path %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="categoryChangeLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <p class="modal-title h2" id="categoryBackdropLabel">Add new category</p>
+        <p class="modal-title h2" id="categoryChangeLabel">Change the category?</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
       </div>
 
-      <%= form_with url: admin_information_architectures_categories_path, method: :post do |form| %>
+      <%= form_with url: '/', method: :patch do |form| %>
+        <%= form.hidden_field :id, value: 0 %>
         <div class="modal-body">
           <%= form.label :name, 'Name:', class: "text-secondary" %><br>
           <%= form.text_field :name, class:"form-control" %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn text-danger" data-bs-dismiss="modal">Cancel</button>
-          <%= form.submit "Add", class: "btn btn-danger" %>
+          <%= form.submit "Update", class: "btn btn-danger" %>
         </div>
       <% end %>
 
     </div>
   </div>
 </div>
-
